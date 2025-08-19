@@ -49,6 +49,7 @@ cd MB5-Grupo2-Ejercicio3.git
 ### 🔽 2. Intalar los requisitos
 ```bash
 pip install -r requirements.txt
+
 ```
 
 ## :white_check_mark: Tecnologias
