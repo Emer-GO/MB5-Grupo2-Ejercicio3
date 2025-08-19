@@ -1,7 +1,29 @@
-<h2>¿Eliminar estudiante?</h2>
-<p>{{ student.nombre }} {{ student.apellido }}</p>
-<form method="post">
-  {% csrf_token %}
-  <button type="submit">Sí, eliminar</button>
-</form>
-<a href="{% url 'student_list' %}">Cancelar</a>
+{% extends 'students/base.html' %}
+{% block content %}
+<div class="box">
+    <h2 class="title is-2">Formulario Estudiante</h2>
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="field">
+            <label class="label">{{ field.label }}</label>
+            <div class="control">
+                {{ field }}
+            </div>
+            {% if field.errors %}
+            <p class="help is-danger">{{ field.errors|striptags }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <div class="field is-grouped is-grouped-right">
+            <p class="control">
+                <button type="submit" class="button is-success is-large">Guardar</button>
+            </p>
+            <p class="control">
+                <a href="{% url 'student_list' %}" class="button is-light is-large">Volver</a>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock %}
