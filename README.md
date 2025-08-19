@@ -4,6 +4,16 @@ Aplicacion en Django con objetivo de mantener el control sobre la informacion de
 
 ## 📂 Estructura del Repositorio
 
+## 📌 Índice
+1. [Descripción](#descripción)
+2. [Características](#características)
+3. [Estructura del Proyecto](#estructura-del-proyecto)
+4. [Instalación](#instalación)
+5. [Uso](#uso)
+6. [Tecnologías](#tecnologías)
+7. [Contribución](#contribución)
+8. [Licencia](#licencia)
+   
 ## ⚙️ Instalación
 
 
