@@ -37,12 +37,12 @@ MB5-Grupo2-Ejercicio3/
 
 ## ⚙️ Instalación
 
-   ### 🔽 1. Clonar el repositorio
-```bash´´´
+### 🔽 1. Clonar el repositorio
+```bash
 git clone https://github.com/Emer-GO/MB5-Grupo2-Ejercicio3.git
 cd MB5-Grupo2-Ejercicio3.git
 
-   ### 🔽 2. Intalar los requisitos
+### 🔽 2. Intalar los requisitos
 ```bash
 pip install -r requirements.txt
 
