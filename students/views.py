@@ -5,6 +5,7 @@ from .models import Student
 from .forms import StudentForm, LoginForm
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
+from django.db.models import Q
 
 
 # --- LOGIN ---
@@ -26,8 +27,18 @@ def logout_view(request):
 # --- CRUD ESTUDIANTES ---
 @login_required
 def student_list(request):
+    q = request.GET.get("q", "")  # recibe el texto de búsqueda
     students = Student.objects.all()
-    return render(request, 'students/student_list.html', {'students': students})
+    if q:
+        students = students.filter(
+            Q(nombre__icontains=q) |
+            Q(apellido__icontains=q) |
+            Q(carrera__icontains=q)
+        )
+    return render(request, 'students/student_list.html', {
+        'students': students,
+        'q': q
+    })
 
 @login_required
 def student_create(request):
