@@ -12,15 +12,33 @@
 
 <a href="{% url 'student_create' %}">➕ Nuevo Estudiante</a>
 
-<ul>
-  {% for s in students %}
-    <li>
-      {{ s.nombre }} {{ s.apellido }} - {{ s.carrera }}
-      <a href="{% url 'student_update' s.id %}">Editar</a>
-      <a href="{% url 'student_delete' s.id %}">Eliminar</a>
-    </li>
-  {% empty %}
-    <li>No se encontraron estudiantes</li>
-  {% endfor %}
-</ul>
+<table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Carrera</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for s in students %}
+      <tr>
+        <td>{{ s.id }}</td>
+        <td>{{ s.nombre }}</td>
+        <td>{{ s.apellido }}</td>
+        <td>{{ s.carrera }}</td>
+        <td>
+          <a href="{% url 'student_update' s.id %}">Editar</a> | 
+          <a href="{% url 'student_delete' s.id %}">Eliminar</a>
+        </td>
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="5">No se encontraron estudiantes</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}
