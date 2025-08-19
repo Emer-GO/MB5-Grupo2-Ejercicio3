@@ -1,0 +1,38 @@
+name: Django CI con superusuario
+
+on:
+  push:
+    branches: [yamir]
+  pull_request:
+    branches: [yamir]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Apply migrations
+        run: |
+          python manage.py migrate
+
+      - name: Create superuser yamir
+        run: |
+          echo "from django.contrib.auth.models import User; \
+          User.objects.filter(username='yamir').exists() or \
+          User.objects.create_superuser('yamir','yamir@example.com','123')" | python manage.py shell
+
+      - name: Run tests
+        run: python manage.py test
